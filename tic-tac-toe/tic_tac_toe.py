@@ -1,10 +1,28 @@
 def main():
     grid = create_grid()
     player_mark = 'O'
-    print(grid)
-    print_grid(grid)
-    set_mark(grid, player_mark)
-    print_grid(grid)
+
+    while True:
+        print_grid(grid)
+        set_mark(grid, player_mark)
+        player_mark = change_mark(player_mark)
+
+
+def change_mark(player_mark):
+    '''
+    Checks what is the current player_mark and changes it to the other
+
+    Parameters:
+        player_mark (str): The current player_mark
+
+    Returns:
+        player_mark (str): The new player_mark
+    '''
+    if player_mark == 'O':
+        player_mark = 'X'
+    else:
+        player_mark = 'O'
+    return player_mark
 
 
 def set_mark(grid, player_mark):
@@ -18,7 +36,7 @@ def set_mark(grid, player_mark):
     Returns:
         None
     '''
-    spot = int(input('\nSelect a spot from 1-9: '))
+    spot = int(input('\n{}\' turn to choose a square (1-9): '.format(player_mark)))
     for row in grid:
         for number in row:
             if number == spot:
