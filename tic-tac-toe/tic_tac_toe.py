@@ -1,3 +1,7 @@
+# Assignment: Tic-Tac-Toe
+# Author: Eleazar Pequeno
+
+
 def main():
     grid = create_grid()
     player_mark = 'O'
