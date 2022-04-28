@@ -4,13 +4,55 @@
 
 def main():
     grid = create_grid()
-    player_mark = 'O'
+    player_mark = 'X'
 
     while True:
         print_grid(grid)
         set_mark(grid, player_mark)
         check_win(grid, player_mark)
+        check_draw(grid)
         player_mark = change_mark(player_mark)
+
+
+def check_draw(grid):
+    '''
+    Checks if the grid is full and prints a draw message
+
+    Parameters:
+        grid (list): A list of lists representing the grid
+
+    Returns:
+        None
+    '''
+
+    def is_int(num):
+        '''
+        Checks if a number is an integer
+
+        Parameters:
+            num (int): The number to be checked
+
+        Returns:
+            True if num is an integer, False otherwise
+        '''
+        try:
+            int(num)
+            return True
+        except ValueError:
+            return False
+
+    draw = False
+    for row in grid:
+        for number in row:
+            if is_int(number):
+                draw = False
+                return
+            else:
+                draw = True
+
+    print_grid(grid)
+    print('\nIt\'s a draw!')
+    exit()
 
 
 def check_win(grid, player_mark):
