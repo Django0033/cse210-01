@@ -3,14 +3,27 @@ def main():
     player_mark = 'O'
     print(grid)
     print_grid(grid)
+    set_mark(grid, player_mark)
+    print_grid(grid)
 
-    spot = int(input('Select a spot from 1-9: '))
+
+def set_mark(grid, player_mark):
+    '''
+    Set players mark in a chosen spot
+
+    Parameters:
+        grid (list): A list of lists representing the grid
+        player_mark (str): The mark to be set
+
+    Returns:
+        None
+    '''
+    spot = int(input('\nSelect a spot from 1-9: '))
     for row in grid:
         for number in row:
             if number == spot:
                 indx = row.index(number)
                 row[indx] = player_mark
-    print_grid(grid)
 
 
 def print_grid(grid):
@@ -23,6 +36,7 @@ def print_grid(grid):
     Returns:
         None
     '''
+    print()
     for row in grid:
         print('{}'.format(' | '.join(str(number) for number in row)))
         if row != grid[-1]:
