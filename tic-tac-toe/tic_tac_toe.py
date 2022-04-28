@@ -5,7 +5,32 @@ def main():
     while True:
         print_grid(grid)
         set_mark(grid, player_mark)
+        check_win(grid, player_mark)
         player_mark = change_mark(player_mark)
+
+
+def check_win(grid, player_mark):
+    '''
+    Checks if there are 3 of the same mark in a row, column or diagonal, and prints the winner.
+
+    Parameters:
+        grid (list): A list of lists representing the grid
+        player_mark (str): The mark of the player who just played
+
+    Returns:
+        None
+    '''
+    if grid[0][0] == grid[0][1] == grid[0][2] or \
+       grid[1][0] == grid[1][1] == grid[1][2] or \
+       grid[2][0] == grid[2][1] == grid[2][2] or \
+       grid[0][0] == grid[1][0] == grid[2][0] or \
+       grid[0][1] == grid[1][1] == grid[2][1] or \
+       grid[0][2] == grid[1][2] == grid[2][2] or \
+       grid[0][0] == grid[1][1] == grid[2][2] or \
+       grid[0][2] == grid[1][1] == grid[2][0]:
+        print_grid(grid)
+        print('\n{} wins!'.format(player_mark))
+        exit()
 
 
 def change_mark(player_mark):
