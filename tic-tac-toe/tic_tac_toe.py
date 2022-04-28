@@ -1,5 +1,15 @@
 def main():
     grid = create_grid()
+    player_mark = 'O'
+    print(grid)
+    print_grid(grid)
+
+    spot = int(input('Select a spot from 1-9: '))
+    for row in grid:
+        for number in row:
+            if number == spot:
+                indx = row.index(number)
+                row[indx] = player_mark
     print_grid(grid)
 
 
